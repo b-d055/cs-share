@@ -114,11 +114,11 @@ namespace ETS.Ts.Content
         this.Ets.Debug.Trace("Parsing sdt edt");
         // this.Ets.Debug.Trace(chartStartTime);
         // this.Ets.Debug.Trace(lastEndTimeOffset);
-        // var sdt = DateTimeOffset.Parse(ShiftStartDateTimeOffset);
-        // var edt = DateTimeOffset.Parse(ShiftEndDateTimeOffset);
+        var sdt = DateTimeOffset.Parse(ShiftStartDateTimeOffset);
+        var edt = DateTimeOffset.Parse(ShiftEndDateTimeOffset);
 
         this.Ets.Debug.Trace("done parsing");
-        var timespan = ShiftEndDateTimeOffset - ShiftStartDateTimeOffset;
+        var timespan = edt - sdt;
         var totalChartSeconds = timespan.TotalSeconds;
         this.Ets.Debug.Trace(totalChartSeconds);
 
