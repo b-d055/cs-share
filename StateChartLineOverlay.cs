@@ -125,18 +125,19 @@ namespace ETS.Ts.Content
         var lineGroups = lineData.Select();
         // new array for speed values
         List<Object> speedArr = new List<Object>(); 
-        var lastCount = null;
+        var lastCount = -1;
         foreach (var row in lineGroups)
         {
-            var timestamp = row.GetString("GroupValue", null);
+            var timestamp = row.GetString("GroupValue", "");
             // only get difference between this value and last value
             var currCount = row.GetString("Value", 0);
-            if (lastCount == null) {
+            // set to curr count if first loop
+            if (lastCount == -1) {
                 lastCount = currCount;
             }
             var currValue = (currCount - lastCount);
             if (currValue < 0) {
-                currValue = 0
+                currValue = 0;
             };
             speedArr.Add(
                 new Dictionary<string, Object> { {"x", timestamp}, {"y", currValue} }
