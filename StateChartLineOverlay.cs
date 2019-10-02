@@ -120,18 +120,21 @@ namespace ETS.Ts.Content
         this.Ets.Debug.Trace("done parsing");
         var timespan = edt - sdt;
         var totalChartSeconds = timespan.TotalSeconds;
-        this.Ets.Debug.Trace(totalChartSeconds);
+        this.Ets.Debug.Trace(totalChartSeconds.ToString());
 
         var lineGroups = lineData.Select();
         // new array for speed values
         List<Object> speedArr = new List<Object>(); 
         foreach (var row in groups)
         {
+            timestamp = row.GetString("GroupValue", null);
+            value = row.GetString("Value", null);
             speedArr.Add(
-                new Dictionary<string, Object> { {"x", "test"}, {"y", 20} }
+                new Dictionary<string, Object> { {"x", timestamp}, {"y", value} }
             );
         };
         
+        this.Ets.Debug.Trace(this.Ets.ToJson(speedArr));
 
         var dateTimeStart = DateTimeOffset.Parse(chartStartTime);
         this.Ets.Debug.Trace(dateTimeStart.ToString());
