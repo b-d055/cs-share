@@ -125,10 +125,10 @@ namespace ETS.Ts.Content
         var lineGroups = lineData.Select();
         // new array for speed values
         List<Object> speedArr = new List<Object>(); 
-        foreach (var row in groups)
+        foreach (var row in lineGroups)
         {
-            timestamp = row.GetString("GroupValue", null);
-            value = row.GetString("Value", null);
+            var timestamp = row.GetString("GroupValue", null);
+            var value = row.GetString("Value", null);
             speedArr.Add(
                 new Dictionary<string, Object> { {"x", timestamp}, {"y", value} }
             );
@@ -146,21 +146,7 @@ namespace ETS.Ts.Content
                 type = "line",
                 xAxisID = "time-line",
                 yAxisID = "line",
-                data = new List<Object> {
-                    new Dictionary<string, Object> { {"x", dateTimeStart.ToString()}, {"y", 20} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(10).ToString()}, {"y", 200} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(20).ToString()}, {"y", 300} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(30).ToString()}, {"y", 250} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(40).ToString()}, {"y", 100} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(50).ToString()}, {"y", 200} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(60).ToString()}, {"y", 300} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(70).ToString()}, {"y", 250} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(80).ToString()}, {"y", 100} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(90).ToString()}, {"y", 200} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(100).ToString()}, {"y", 300} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(110).ToString()}, {"y", 250} },
-                    new Dictionary<string, Object> { {"x", dateTimeStart.AddMinutes(120).ToString()}, {"y", 100} },
-                },
+                data = speedArr,
                 backgroundColor = "#000000",
                 fill = 0,
             }
