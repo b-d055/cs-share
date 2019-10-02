@@ -202,7 +202,11 @@ namespace ETS.Ts.Content
             // Configuration options go here
             options: {
                 onClick: testClick,
-                bezierCurve : false,
+                elements: {
+                    line: {
+                        tension: 0 // disables bezier curves
+                    }
+                },
                 scales: {
                     xAxes: [
                         {
