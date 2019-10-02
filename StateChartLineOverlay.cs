@@ -122,15 +122,15 @@ namespace ETS.Ts.Content
         var totalChartSeconds = timespan.TotalSeconds;
         this.Ets.Debug.Trace(totalChartSeconds.ToString());
 
-        var lineGroups = lineData.Select();
+        // var lineGroups = lineData.Select();
         // new array for speed values
         List<Object> speedArr = new List<Object>(); 
         var lastCount = -1;
-        foreach (var row in lineGroups)
+        foreach (DataRow row in lineData.Rows
         {
-            var timestamp = row.GetString("GroupValue", "");
+            var timestamp = row["GroupValue"];
             // only get difference between this value and last value
-            var currCount = row.GetString("Value", 0);
+            int currCount = (int)row["Value"];
             // set to curr count if first loop
             if (lastCount == -1) {
                 lastCount = currCount;
