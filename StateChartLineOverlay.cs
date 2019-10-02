@@ -76,14 +76,14 @@ namespace ETS.Ts.Content
                 // only generate if event has ended
                 if (!string.IsNullOrEmpty(EndDateTimeOffset) && !string.IsNullOrEmpty(StartDateTimeOffset)) {
                     this.Ets.Debug.Trace("Date strings");
-                    this.Ets.Debug.Trace(EndDateTimeOffset);
+                    this.Ets.Debug.Trace(lastEndTimeOffset);
                     this.Ets.Debug.Trace(StartDateTimeOffset);
-                    var sdto = DateTimeOffset.Parse(StartDateTimeOffset);
-                    var edto = DateTimeOffset.Parse(EndDateTimeOffset);
-                    this.Ets.Debug.TraceObject((sdto - edto));
+                    this.Ets.Debug.Trace(EndDateTimeOffset);
+                    // var sdto = DateTimeOffset.Parse(StartDateTimeOffset);
+                    // var edto = DateTimeOffset.Parse(EndDateTimeOffset);
+                    // this.Ets.Debug.TraceObject((sdto - edto));
                     
-                    // this.Ets.Debug.TraceObject(datasets.GenerateRunning(StartDateTimeOffset, EndDateTimeOffset));
-                    datasets.datasets.Add(datasets.GenerateRunning(StartDateTimeOffset, EndDateTimeOffset));
+                    datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, StartDateTimeOffset));
                 }
             }
             if (lastEndTimeOffset == "") {
