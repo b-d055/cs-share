@@ -139,9 +139,12 @@ namespace ETS.Ts.Content
             if (currValue < 0) {
                 currValue = 0;
             };
-            speedArr.Add(
-                new Dictionary<string, Object> { {"x", timestamp}, {"y", currValue} }
-            );
+            // only add if greater than 0 to avoid cluttering
+            if (currValue > 0) {
+                speedArr.Add(
+                    new Dictionary<string, Object> { {"x", timestamp}, {"y", currValue} }
+                );
+            }
             lastCount = currCount;
         };
         
