@@ -227,8 +227,8 @@ namespace ETS.Ts.Content
                             position: 'top',
                             stacked: true,
                             ticks: {
-                            min: 0,
-                            max: REPLACE_EVENT_MAX,
+                                min: 0,
+                                max: REPLACE_EVENT_MAX,
                             }
                         }
                     ],
@@ -247,6 +247,9 @@ namespace ETS.Ts.Content
                         },
                         {
                             id: 'line',
+                            ticks: {
+                                min: 0,
+                            }
                         }
                     ],
                 }
