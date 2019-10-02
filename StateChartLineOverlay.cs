@@ -84,16 +84,16 @@ namespace ETS.Ts.Content
                     
                     // this.Ets.Debug.TraceObject(datasets.GenerateRunning(StartDateTimeOffset, EndDateTimeOffset));
                     datasets.datasets.Add(datasets.GenerateRunning(StartDateTimeOffset, EndDateTimeOffset));
-
-                    lastEndTimeOffset = EndDateTimeOffset;
-                    this.Ets.Debug.Trace("New EDT");
-                    this.Ets.Debug.Trace(lastEndTimeOffset);
                 }
             }
             if (lastEndTimeOffset == "") {
                 // populate start on first event
                 chartStartTime = StartDateTimeOffset;
             }
+
+            lastEndTimeOffset = EndDateTimeOffset;
+            this.Ets.Debug.Trace("New EDT");
+            this.Ets.Debug.Trace(lastEndTimeOffset);
             
             datasets.datasets.Add(new ChartData() 
                 {
