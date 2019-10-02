@@ -125,13 +125,23 @@ namespace ETS.Ts.Content
         var lineGroups = lineData.Select();
         // new array for speed values
         List<Object> speedArr = new List<Object>(); 
+        var lastCount = null;
         foreach (var row in lineGroups)
         {
             var timestamp = row.GetString("GroupValue", null);
-            var value = row.GetString("Value", null);
+            // only get difference between this value and last value
+            var currCount = row.GetString("Value", 0);
+            if (lastCount == null) {
+                lastCount = currCount;
+            }
+            var currValue = (currCount - lastCount);
+            if (currValue < 0) {
+                currValue = 0
+            };
             speedArr.Add(
-                new Dictionary<string, Object> { {"x", timestamp}, {"y", value} }
+                new Dictionary<string, Object> { {"x", timestamp}, {"y", currValue} }
             );
+            lastCount = currCount;
         };
         
         this.Ets.Debug.Trace(this.Ets.ToJson(speedArr));
