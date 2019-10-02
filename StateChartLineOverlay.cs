@@ -143,7 +143,7 @@ namespace ETS.Ts.Content
                 currValue = 0;
             };
             // only add if greater than 0 to avoid cluttering
-            if (ignoreDuplicateLineReadingsKey == 1 || currValue > 0) {
+            if (ignoreDuplicateLineReadingsKey == 0 || currValue > 0) {
                 speedArr.Add(
                     new Dictionary<string, Object> { {"x", timestamp}, {"y", currValue} }
                 );
@@ -202,6 +202,7 @@ namespace ETS.Ts.Content
             // Configuration options go here
             options: {
                 onClick: testClick,
+                bezierCurve : false,
                 scales: {
                     xAxes: [
                         {
