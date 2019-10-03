@@ -111,7 +111,7 @@ namespace ETS.Ts.Content
                 xAxisID = "event-line",
                 yAxisID = "event",
                 data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
-                backgroundColor = "#" + (backgroundColor).ToString("X"),
+                backgroundColor = backgroundColor,
                 }
             );
         }
