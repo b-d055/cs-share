@@ -310,7 +310,7 @@ namespace ETS.Ts.Content
                 xAxisID = "event-line",
                 yAxisID = "event",
                 data = new List<Object> { totalSeconds },
-                backgroundColor = "#f0f0f0",
+                backgroundColor = "#6cc14c",
             };
         }
     }
