@@ -70,10 +70,11 @@ namespace ETS.Ts.Content
         foreach (var row in groups)
         {
             //  this.Ets.Debug.Trace(this.Ets.ToJson(row));
-            var backgroundColor = -Int32.Parse(row.GetString("OeeEventTypeColor", ""));
+            // var backgroundColor = -Int32.Parse(row.GetString("OeeEventTypeColor", ""));
             var eventDefinitionTypeColor = row.GetString("EventDefinitionTypeColor", null);
             this.Ets.Debug.Trace("Event Definition Type Color");
-            this.Ets.Debug.TraceObject(eventDefinitionTypeColor.AsColor());
+            var backgroundColor = eventDefinitionTypeColor.AsColor().ToHexDisplay();
+            this.Ets.Debug.TraceObject(backgroundColor);
             
             var StartDateTimeOffset = row.GetString("StartDateTimeOffset", "");
             var EndDateTimeOffset = row.GetString("EndDateTimeOffset", "");
