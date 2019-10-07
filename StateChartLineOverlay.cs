@@ -181,7 +181,7 @@ namespace ETS.Ts.Content
         const testClick = function(event) {
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
-            if (firstPoint._datasetIndex) {
+            if (firstPoint && firstPoint._datasetIndex) {
                 console.log('dataset index', firstPoint._datasetIndex);
                 console.log('chart datasets', chart.data.datasets);
                 if (firstPoint) {
