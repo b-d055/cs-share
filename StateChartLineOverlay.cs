@@ -169,7 +169,7 @@ namespace ETS.Ts.Content
                 yAxisID = "line",
                 data = speedArr,
                 backgroundColor = "#000000",
-                borderColor = '#000000',
+                borderColor = "#000000",
                 fill = 0,
             }
         );
