@@ -180,7 +180,7 @@ namespace ETS.Ts.Content
         this.Ets.Debug.Trace(this.Ets.ToJson(datasets));
 
         string chartJsInit = @"
-        const testClick = function(event) {
+        const openEvent = function(event) {
             // var currentQueryString = new ets.objects.Querystring();
             // console.log('currentQueryString', currentQueryString);
             var currUrl = window.location;
@@ -197,8 +197,8 @@ namespace ETS.Ts.Content
                     // var value = chart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
                     var dataset = chart.data.datasets[firstPoint._datasetIndex];
                     // navigate when click on event
-                    if (dataset.yAxisID === 'event') {
-                        window.location.href = origin + pathname + '_EventEdit?EventID=' + dataset.eventID;
+                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running') {
+                        window.location.href = origin + pathname + '_EventEdit?EventID=' + dataset.eventId;
                     }
                 }
             } else {
@@ -220,7 +220,7 @@ namespace ETS.Ts.Content
 
             // Configuration options go here
             options: {
-                onClick: testClick,
+                onClick: openEvent,
                 legend: {
                     labels: {
                         generateLabels: function(chart) {
