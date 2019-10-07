@@ -104,9 +104,9 @@ namespace ETS.Ts.Content
             
             datasets.datasets.Add(new ChartData() 
                 {
-                label = row.GetString("EventDefinitionName", "NotSet"),
+                label = row.GetString("EventDefinitionName", "N/A"),
                 eventId = row.GetString("EventID", "N/A"),
-                groupId = row.GetString("EventDefinitionTypeName", "NotSet"),
+                groupId = row.GetString("EventDefinitionTypeName", "N/A"),
                 type = "horizontalBar",
                 xAxisID = "event-line",
                 yAxisID = "event",
@@ -169,7 +169,7 @@ namespace ETS.Ts.Content
                 yAxisID = "line",
                 data = speedArr,
                 backgroundColor = "#000000",
-                borderColor = "#000000",
+                borderColor = "rgba(0,0,0,0.8)",
                 fill = 0,
             }
         );
