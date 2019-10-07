@@ -181,6 +181,8 @@ namespace ETS.Ts.Content
 
         string chartJsInit = @"
         const testClick = function(event) {
+            var currentQueryString = new ets.objects.Querystring();
+            console.log('currentQueryString', currentQueryString);
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
             if (firstPoint && firstPoint._datasetIndex) {
@@ -188,7 +190,11 @@ namespace ETS.Ts.Content
                 console.log('chart datasets', chart.data.datasets);
                 if (firstPoint) {
                     // var value = chart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-                    var data = chart.data.datasets[firstPoint._datasetIndex];
+                    var dataset = chart.data.datasets[firstPoint._datasetIndex];
+                    // navigate when click on event
+                    // if (dataset.yAxisID === 'event') {
+                    //     window.location.href = '...';
+                    // }
                 }
                 // console.log('value', value);
                 console.log('data', data);
