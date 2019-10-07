@@ -81,7 +81,7 @@ namespace ETS.Ts.Content
             // generate "running" bar when last event end does not equal start of current event
             if (lastEndTimeOffset != StartDateTimeOffset && lastEndTimeOffset!= "") {
                 // only generate if event has ended
-                if (!string.IsNullOrEmpty(EndDateTimeOffset) && !string.IsNullOrEmpty(StartDateTimeOffset)) {
+                if (!string.IsNullOrEmpty(lastEndTimeOffset) && !string.IsNullOrEmpty(StartDateTimeOffset)) {
                     this.Ets.Debug.Trace("Date strings");
                     this.Ets.Debug.Trace(lastEndTimeOffset);
                     this.Ets.Debug.Trace(StartDateTimeOffset);
@@ -259,6 +259,7 @@ namespace ETS.Ts.Content
                             } else {
                                 return tooltipItem.xLabel;
                             }
+                        }
                     }
                 },
                 elements: {
