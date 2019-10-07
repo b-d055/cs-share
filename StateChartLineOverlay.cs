@@ -106,7 +106,7 @@ namespace ETS.Ts.Content
                 {
                 label = row.GetString("EventDefinitionName", "NotSet"),
                 eventId = row.GetString("EventID", "N/A"),
-                groupId = "Group 1",
+                groupId = row.GetString("EventDefinitionName", "NotSet"),
                 type = "horizontalBar",
                 xAxisID = "event-line",
                 yAxisID = "event",
@@ -206,6 +206,30 @@ namespace ETS.Ts.Content
             // Configuration options go here
             options: {
                 onClick: testClick,
+                legend: {
+                    labels: {
+                        generateLabels: function(chart) {
+                            var data = chart.data;
+                            console.log('data', data);
+                            if (data.labels.length && data.datasets.length) {
+                                let eventTypeLabels = {};
+                                data.datasets.map(function(dataset, i) {
+                                    if (dataset.yAxisID === 'event') {
+                                        eventTypeLabels[dataset.eventType] = {
+                                            text: dataset.groupId,
+                                            fillStyle: dataset.backgroundColor,
+                                            index: i
+                                        }
+                                    }
+                                });
+                                return Object.keys(eventTypeLabels).map(eventType => {
+                                    return eventTypeLabels[eventType];
+                                })
+                            }
+                            return [];
+                        }
+                    }
+                },
                 elements: {
                     line: {
                         tension: 0 // disables bezier curves
