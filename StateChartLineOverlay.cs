@@ -112,6 +112,7 @@ namespace ETS.Ts.Content
                 yAxisID = "event",
                 data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
                 backgroundColor = backgroundColor,
+                notes = row.GetString("Notes", ""),
                 }
             );
         }
@@ -242,7 +243,7 @@ namespace ETS.Ts.Content
                     callbacks: {
                         title: function(tooltipItems, data) {
                             // add eventId to 'Event' title, use date for speed title
-                            console.log('tooltipitems', tooltipItems);
+                            // console.log('tooltipitems', tooltipItems);
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
                             if (dataset.yAxisID === 'event') {
                                 return tooltipItems[0].yLabel + ' ' + dataset.eventId;
@@ -252,8 +253,6 @@ namespace ETS.Ts.Content
                         },
                         afterLabel: function(tooltipItem, data) {
                             // only show custom 'seconds' tooltip for events
-                            console.log('tooltipitem', tooltipItem);
-                            console.log('data', data);
                             var dataset = data.datasets[tooltipItem.datasetIndex];
                             if (dataset.yAxisID === 'event') {
                                 return 'seconds';
@@ -269,7 +268,16 @@ namespace ETS.Ts.Content
                             } else {
                                 return dataset.label + ': ' + tooltipItem.xLabel;
                             }
-                        }
+                        },
+                        footer: function(tooltipItems, data) {
+                            // add notes when non-null
+                            var dataset = data.datasets[tooltipItems[0].datasetIndex];
+                            if (dataset.notes) {
+                                return dataset.notes;
+                            } else {
+                                return '';
+                            }
+                        },
                     }
                 },
                 elements: {
@@ -393,6 +401,7 @@ namespace ETS.Ts.Content
         public string backgroundColor;
         public string borderColor;
         public int fill;
+        public string notes;
         
         public ChartData()
         {
@@ -405,6 +414,7 @@ namespace ETS.Ts.Content
         this.data = new List<Object> {""};
         this.backgroundColor = "";
         this.borderColor = "";
+        this.notes = "";
         }
     }
   }
