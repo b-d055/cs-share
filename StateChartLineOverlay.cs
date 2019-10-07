@@ -242,11 +242,12 @@ namespace ETS.Ts.Content
                     callbacks: {
                         title: function(tooltipItems, data) {
                             // add eventId to 'Event' title, use date for speed title
+                            console.log('tooltipitems', tooltipItems);
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
                             if (dataset.yAxisID === 'event') {
-                                return dataset.yLabel + ' ' + tooltipItems[0].eventId
+                                return dataset.yLabel + ' ' + tooltipItems[0].eventId;
                             } else {
-                                return dataset.xLabel
+                                return dataset.xLabel;
                             }
                         },
                         afterLabel: function(tooltipItem, data) {
