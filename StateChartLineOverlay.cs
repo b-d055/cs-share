@@ -169,6 +169,7 @@ namespace ETS.Ts.Content
                 yAxisID = "line",
                 data = speedArr,
                 backgroundColor = "#000000",
+                borderColor = '#000000',
                 fill = 0,
             }
         );
@@ -356,6 +357,7 @@ namespace ETS.Ts.Content
         public string yAxisID;
         public List<Object> data;
         public string backgroundColor;
+        public string borderColor;
         public int fill;
         
         public ChartData()
@@ -368,6 +370,7 @@ namespace ETS.Ts.Content
         this.yAxisID = "";
         this.data = new List<Object> {""};
         this.backgroundColor = "";
+        this.borderColor = "";
         }
     }
   }
