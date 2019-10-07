@@ -238,6 +238,21 @@ namespace ETS.Ts.Content
                         }
                     }
                 },
+                tooltips: {
+                    callbacks: {
+                        afterLabel: function(tooltipItem, data) {
+                            // only show custom 'seconds' tooltip for events
+                            console.log('tooltipitem', tooltipItem);
+                            console.log('data', data);
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            if (dataset.yAxisID === 'event') {
+                                return 'seconds';
+                            } else {
+                                return ''
+                            }
+                        },
+                    }
+                },
                 elements: {
                     line: {
                         tension: 0 // disables bezier curves
