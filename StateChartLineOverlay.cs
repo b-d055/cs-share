@@ -106,7 +106,7 @@ namespace ETS.Ts.Content
                 {
                 label = row.GetString("EventDefinitionName", "NotSet"),
                 eventId = row.GetString("EventID", "N/A"),
-                groupId = row.GetString("EventDefinitionName", "NotSet"),
+                groupId = row.GetString("EventDefinitionTypeName", "NotSet"),
                 type = "horizontalBar",
                 xAxisID = "event-line",
                 yAxisID = "event",
@@ -222,6 +222,7 @@ namespace ETS.Ts.Content
                                         }
                                     }
                                 });
+                                console.log(eventTypeLabels);
                                 return Object.keys(eventTypeLabels).map(eventType => {
                                     return eventTypeLabels[eventType];
                                 })
