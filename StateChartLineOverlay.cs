@@ -178,7 +178,7 @@ namespace ETS.Ts.Content
         this.Ets.Debug.Trace(this.Ets.ToJson(datasets));
 
         string chartJsInit = @"
-        var testClick = (event) => {
+        const testClick = function(event) {
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
             console.log('dataset index', firstPoint._datasetIndex);
