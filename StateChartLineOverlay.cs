@@ -245,9 +245,9 @@ namespace ETS.Ts.Content
                             console.log('tooltipitems', tooltipItems);
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
                             if (dataset.yAxisID === 'event') {
-                                return dataset.yLabel + ' ' + tooltipItems[0].eventId;
+                                return tooltipItems[0].yLabel + ' ' + dataset.eventId;
                             } else {
-                                return dataset.xLabel;
+                                return tooltipItems[0].xLabel;
                             }
                         },
                         afterLabel: function(tooltipItem, data) {
