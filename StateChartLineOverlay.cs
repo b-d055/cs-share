@@ -185,7 +185,8 @@ namespace ETS.Ts.Content
             // console.log('currentQueryString', currentQueryString);
             var currUrl = window.location;
             var origin = currUrl.origin;
-            var pathname = currUrl.pathname.substring(0, str.lastIndexOf('/') + 1);
+            var pathname = currUrl.pathname;
+            pathname = pathname.substring(0, pathname.lastIndexOf('/') + 1);
 
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
