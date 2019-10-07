@@ -240,6 +240,15 @@ namespace ETS.Ts.Content
                 },
                 tooltips: {
                     callbacks: {
+                        title: function(tooltipItems, data) {
+                            // add eventId to 'Event' title, use date for speed title
+                            var dataset = data.datasets[tooltipItems[0].datasetIndex];
+                            if (dataset.yAxisID === 'event') {
+                                return dataset.yLabel + ' ' + tooltipItems[0].eventId
+                            } else {
+                                return dataset.xLabel
+                            }
+                        },
                         afterLabel: function(tooltipItem, data) {
                             // only show custom 'seconds' tooltip for events
                             console.log('tooltipitem', tooltipItem);
@@ -251,15 +260,15 @@ namespace ETS.Ts.Content
                                 return '';
                             }
                         },
-                        // label: function(tooltipItem, data) {
-                        //     // only yLabel for speed, xLabel for events
-                        //     var dataset = data.datasets[tooltipItem.datasetIndex];
-                        //     if (dataset.yAxisID === 'line') {
-                        //         return tooltipItem.yLabel;
-                        //     } else {
-                        //         return tooltipItem.xLabel;
-                        //     }
-                        // }
+                        label: function(tooltipItem, data) {
+                            // only yLabel for speed, xLabel for events
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            if (dataset.yAxisID === 'line') {
+                                return dataset.label + ': ' + tooltipItem.yLabel;
+                            } else {
+                                return dataset.label + ': ' + tooltipItem.xLabel;
+                            }
+                        }
                     }
                 },
                 elements: {
