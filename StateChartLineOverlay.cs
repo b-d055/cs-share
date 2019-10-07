@@ -251,15 +251,15 @@ namespace ETS.Ts.Content
                                 return '';
                             }
                         },
-                        label: function(tooltipItem, data) {
-                            // only yLabel for speed, xLabel for events
-                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                            if (dataset.yAxisID === 'line') {
-                                return tooltipItem.yLabel;
-                            } else {
-                                return tooltipItem.xLabel;
-                            }
-                        }
+                        // label: function(tooltipItem, data) {
+                        //     // only yLabel for speed, xLabel for events
+                        //     var dataset = data.datasets[tooltipItem.datasetIndex];
+                        //     if (dataset.yAxisID === 'line') {
+                        //         return tooltipItem.yLabel;
+                        //     } else {
+                        //         return tooltipItem.xLabel;
+                        //     }
+                        // }
                     }
                 },
                 elements: {
