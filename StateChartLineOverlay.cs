@@ -181,14 +181,18 @@ namespace ETS.Ts.Content
         const testClick = function(event) {
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
-            console.log('dataset index', firstPoint._datasetIndex);
-            console.log('chart datasets', chart.data.datasets);
-            if (firstPoint) {
-                // var value = chart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-                var data = chart.data.datasets[firstPoint._datasetIndex];
+            if (firstPoint._datasetIndex) {
+                console.log('dataset index', firstPoint._datasetIndex);
+                console.log('chart datasets', chart.data.datasets);
+                if (firstPoint) {
+                    // var value = chart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
+                    var data = chart.data.datasets[firstPoint._datasetIndex];
+                }
+                // console.log('value', value);
+                console.log('data', data);
+            } else {
+                console.log('not a dataset');
             }
-            // console.log('value', value);
-            console.log('data', data);
         };
         var ctx = document.getElementById('stateChartLineOverlay').getContext('2d');
         var startDate = new Date();
@@ -225,7 +229,7 @@ namespace ETS.Ts.Content
                                     }
                                 });
                                 console.log(eventTypeLabels);
-                                return Object.keys(eventTypeLabels).map(eventType => {
+                                return Object.keys(eventTypeLabels).map(function(eventType) {
                                     return eventTypeLabels[eventType];
                                 })
                             }
