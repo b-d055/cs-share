@@ -215,10 +215,12 @@ namespace ETS.Ts.Content
                                 let eventTypeLabels = {};
                                 data.datasets.map(function(dataset, i) {
                                     if (dataset.yAxisID === 'event') {
-                                        eventTypeLabels[dataset.eventType] = {
-                                            text: dataset.groupId,
-                                            fillStyle: dataset.backgroundColor,
-                                            index: i
+                                        if (!eventTypeLabels[dataset.groupId]) {
+                                            eventTypeLabels[dataset.groupId] = {
+                                                text: dataset.groupId,
+                                                fillStyle: dataset.backgroundColor,
+                                                index: i
+                                            }
                                         }
                                     }
                                 });
