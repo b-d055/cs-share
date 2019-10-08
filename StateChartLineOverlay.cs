@@ -113,7 +113,7 @@ namespace ETS.Ts.Content
                 data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
                 backgroundColor = backgroundColor,
                 notes = row.GetString("Notes", ""),
-                isActive = row.GetString("IsActive", false),
+                isActive = row.GetBoolean("IsActive", false),
                 }
             );
         }
