@@ -79,6 +79,10 @@ namespace ETS.Ts.Content
                 
                 var StartDateTimeOffset = row.GetString("StartDateTimeOffset", "");
                 var EndDateTimeOffset = row.GetString("EndDateTimeOffset", "");
+                // generate "running" bar at beginning of shift if first event does not match shift start
+                if (ShiftStartDateTimeOffset.ToString() != StartDateTimeOffset && lastEndTimeOffset== "") {
+                    datasets.datasets.Add(datasets.GenerateRunning(ShiftStartDateTimeOffset.ToString(), StartDateTimeOffset));
+                }
                 // generate "running" bar when last event end does not equal start of current event
                 if (lastEndTimeOffset != StartDateTimeOffset && lastEndTimeOffset!= "") {
                     // only generate if event has ended
