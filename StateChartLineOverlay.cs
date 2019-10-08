@@ -126,6 +126,10 @@ namespace ETS.Ts.Content
                     }
                 );
             }
+            if (lastEndTimeOffset != EndDateTimeOffset && lastEndTimeOffset!= "") {
+                // generate running block for last event if last event did not go to end of shift
+                datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, EndDateTimeOffset));
+            }
         }
 
         // capture total seconds to make sure line and bar charts line up
@@ -211,7 +215,7 @@ namespace ETS.Ts.Content
                     
                     var dataset = chart.data.datasets[firstPoint._datasetIndex];
                     // navigate when click on event, and event is not active or not shown for ack
-                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running' && !dataset.isClickable) {
+                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running' && dataset.isClickable) {
                         window.location.href = origin + pathname + '_EventEdit?EventID=' + dataset.eventId;
                     }
                 }
