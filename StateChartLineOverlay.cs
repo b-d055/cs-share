@@ -126,6 +126,9 @@ namespace ETS.Ts.Content
                     }
                 );
             }
+            this.Ets.Debug.Trace("Generate last running details");
+            this.Ets.Debug.Trace(lastEndTimeOffset);
+            this.Ets.Debug.Trace(ShiftEndDateTimeOffset.ToString());
             if (lastEndTimeOffset != ShiftEndDateTimeOffset.ToString() && lastEndTimeOffset!= "") {
                 // generate running block for last event if last event did not go to end of shift
                 datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, ShiftEndDateTimeOffset.ToString()));
