@@ -102,6 +102,14 @@ namespace ETS.Ts.Content
                 lastEndTimeOffset = EndDateTimeOffset;
                 this.Ets.Debug.Trace("New EDT");
                 this.Ets.Debug.Trace(lastEndTimeOffset);
+
+                var showForAcknowledge = row.GetInteger("ShowForAcknowledge", 1);
+                var isActive = row.GetBoolean("IsActive", false);
+                var isClickable = true;
+                // do not make active events or events not shown for acknowledge clickable
+                if (isActive == true || showForAcknowledge == 0) {
+                    isClickable = false;
+                }
                 
                 datasets.datasets.Add(new ChartData() 
                     {
@@ -114,7 +122,7 @@ namespace ETS.Ts.Content
                     data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
                     backgroundColor = backgroundColor,
                     notes = row.GetString("Notes", ""),
-                    isActive = row.GetBoolean("IsActive", false),
+                    isClickable = isClickable,
                     }
                 );
             }
@@ -160,7 +168,7 @@ namespace ETS.Ts.Content
         };
         
         this.Ets.Debug.Trace(this.Ets.ToJson(speedArr));
-        if (dateTimeStart != "") {
+        if (chartStartTime != "") {
             var dateTimeStart = DateTimeOffset.Parse(chartStartTime);
             this.Ets.Debug.Trace(dateTimeStart.ToString());
         } else {
@@ -202,8 +210,8 @@ namespace ETS.Ts.Content
                 if (firstPoint) {
                     
                     var dataset = chart.data.datasets[firstPoint._datasetIndex];
-                    // navigate when click on event, and event is not active
-                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running' && !dataset.isActive) {
+                    // navigate when click on event, and event is not active or not shown for ack
+                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running' && !dataset.isClickable) {
                         window.location.href = origin + pathname + '_EventEdit?EventID=' + dataset.eventId;
                     }
                 }
@@ -422,7 +430,7 @@ namespace ETS.Ts.Content
         public string borderColor;
         public int fill;
         public string notes;
-        public bool isActive;
+        public bool isClickable;
         
         public ChartData()
         {
@@ -436,7 +444,7 @@ namespace ETS.Ts.Content
         this.backgroundColor = "";
         this.borderColor = "";
         this.notes = "";
-        this.isActive = false;
+        this.isClickable = false;
         }
     }
   }
