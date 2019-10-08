@@ -113,6 +113,7 @@ namespace ETS.Ts.Content
                 data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
                 backgroundColor = backgroundColor,
                 notes = row.GetString("Notes", ""),
+                isActive = row.GetString("IsActive", false),
                 }
             );
         }
@@ -181,8 +182,7 @@ namespace ETS.Ts.Content
 
         string chartJsInit = @"
         const openEvent = function(event) {
-            // var currentQueryString = new ets.objects.Querystring();
-            // console.log('currentQueryString', currentQueryString);
+            // get existing base URL
             var currUrl = window.location;
             var origin = currUrl.origin;
             var pathname = currUrl.pathname;
@@ -194,10 +194,10 @@ namespace ETS.Ts.Content
                 console.log('dataset index', firstPoint._datasetIndex);
                 console.log('chart datasets', chart.data.datasets);
                 if (firstPoint) {
-                    // var value = chart.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
+                    
                     var dataset = chart.data.datasets[firstPoint._datasetIndex];
-                    // navigate when click on event
-                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running') {
+                    // navigate when click on event, and event is not active
+                    if (dataset.yAxisID === 'event' && dataset.eventId !== 'Running' && !dataset.isActive) {
                         window.location.href = origin + pathname + '_EventEdit?EventID=' + dataset.eventId;
                     }
                 }
@@ -212,15 +212,17 @@ namespace ETS.Ts.Content
             // The type of chart we want to create
             type: 'horizontalBar',
 
-            // The data for our dataset
+            // Placeholder for datasets
             data: {
                 labels: ['Event'],
                 datasets: REPLACE_DATASETS
             },
 
-            // Configuration options go here
+            // Configuration options
             options: {
+                // custom click option
                 onClick: openEvent,
+                // new legend to group events together
                 legend: {
                     labels: {
                         generateLabels: function(chart) {
@@ -248,6 +250,7 @@ namespace ETS.Ts.Content
                         }
                     }
                 },
+                // custom tooltips for speed and events
                 tooltips: {
                     callbacks: {
                         title: function(tooltipItems, data) {
@@ -294,6 +297,7 @@ namespace ETS.Ts.Content
                         tension: 0 // disables bezier curves
                     }
                 },
+                // separate scales for events and speed
                 scales: {
                     xAxes: [
                         {
@@ -411,6 +415,7 @@ namespace ETS.Ts.Content
         public string borderColor;
         public int fill;
         public string notes;
+        public string isActive;
         
         public ChartData()
         {
@@ -424,6 +429,7 @@ namespace ETS.Ts.Content
         this.backgroundColor = "";
         this.borderColor = "";
         this.notes = "";
+        this.isActive = false;
         }
     }
   }
