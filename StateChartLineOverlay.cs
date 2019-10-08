@@ -126,9 +126,9 @@ namespace ETS.Ts.Content
                     }
                 );
             }
-            if (lastEndTimeOffset != EndDateTimeOffset && lastEndTimeOffset!= "") {
+            if (lastEndTimeOffset != ShiftEndDateTimeOffset.ToString() && lastEndTimeOffset!= "") {
                 // generate running block for last event if last event did not go to end of shift
-                datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, EndDateTimeOffset));
+                datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, ShiftEndDateTimeOffset.ToString()));
             }
         }
 
