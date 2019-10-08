@@ -66,56 +66,58 @@ namespace ETS.Ts.Content
 
         // user first start time as start time for graph
         var chartStartTime = "";
-        
-        foreach (var row in groups)
-        {
-            //  this.Ets.Debug.Trace(this.Ets.ToJson(row));
-            // var backgroundColor = -Int32.Parse(row.GetString("OeeEventTypeColor", ""));
-            var eventDefinitionTypeColor = row.GetString("EventDefinitionTypeColor", null);
-            this.Ets.Debug.Trace("Event Definition Type Color");
-            var backgroundColor = eventDefinitionTypeColor.AsColor().ToHexDisplay();
-            this.Ets.Debug.TraceObject(backgroundColor);
-            
-            var StartDateTimeOffset = row.GetString("StartDateTimeOffset", "");
-            var EndDateTimeOffset = row.GetString("EndDateTimeOffset", "");
-            // generate "running" bar when last event end does not equal start of current event
-            if (lastEndTimeOffset != StartDateTimeOffset && lastEndTimeOffset!= "") {
-                // only generate if event has ended
-                if (!string.IsNullOrEmpty(lastEndTimeOffset) && !string.IsNullOrEmpty(StartDateTimeOffset)) {
-                    this.Ets.Debug.Trace("Date strings");
-                    this.Ets.Debug.Trace(lastEndTimeOffset);
-                    this.Ets.Debug.Trace(StartDateTimeOffset);
-                    this.Ets.Debug.Trace(EndDateTimeOffset);
-                    // var sdto = DateTimeOffset.Parse(StartDateTimeOffset);
-                    // var edto = DateTimeOffset.Parse(EndDateTimeOffset);
-                    // this.Ets.Debug.TraceObject((sdto - edto));
-                    
-                    datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, StartDateTimeOffset));
-                }
-            }
-            if (lastEndTimeOffset == "") {
-                // populate start on first event
-                chartStartTime = StartDateTimeOffset;
-            }
 
-            lastEndTimeOffset = EndDateTimeOffset;
-            this.Ets.Debug.Trace("New EDT");
-            this.Ets.Debug.Trace(lastEndTimeOffset);
-            
-            datasets.datasets.Add(new ChartData() 
-                {
-                label = row.GetString("EventDefinitionName", "N/A"),
-                eventId = row.GetString("EventID", "N/A"),
-                groupId = row.GetString("EventDefinitionTypeName", "N/A"),
-                type = "horizontalBar",
-                xAxisID = "event-line",
-                yAxisID = "event",
-                data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
-                backgroundColor = backgroundColor,
-                notes = row.GetString("Notes", ""),
-                isActive = row.GetBoolean("IsActive", false),
+        if (groups.Length > 0) {
+            foreach (var row in groups)
+            {
+                //  this.Ets.Debug.Trace(this.Ets.ToJson(row));
+                // var backgroundColor = -Int32.Parse(row.GetString("OeeEventTypeColor", ""));
+                var eventDefinitionTypeColor = row.GetString("EventDefinitionTypeColor", null);
+                this.Ets.Debug.Trace("Event Definition Type Color");
+                var backgroundColor = eventDefinitionTypeColor.AsColor().ToHexDisplay();
+                this.Ets.Debug.TraceObject(backgroundColor);
+                
+                var StartDateTimeOffset = row.GetString("StartDateTimeOffset", "");
+                var EndDateTimeOffset = row.GetString("EndDateTimeOffset", "");
+                // generate "running" bar when last event end does not equal start of current event
+                if (lastEndTimeOffset != StartDateTimeOffset && lastEndTimeOffset!= "") {
+                    // only generate if event has ended
+                    if (!string.IsNullOrEmpty(lastEndTimeOffset) && !string.IsNullOrEmpty(StartDateTimeOffset)) {
+                        this.Ets.Debug.Trace("Date strings");
+                        this.Ets.Debug.Trace(lastEndTimeOffset);
+                        this.Ets.Debug.Trace(StartDateTimeOffset);
+                        this.Ets.Debug.Trace(EndDateTimeOffset);
+                        // var sdto = DateTimeOffset.Parse(StartDateTimeOffset);
+                        // var edto = DateTimeOffset.Parse(EndDateTimeOffset);
+                        // this.Ets.Debug.TraceObject((sdto - edto));
+                        
+                        datasets.datasets.Add(datasets.GenerateRunning(lastEndTimeOffset, StartDateTimeOffset));
+                    }
                 }
-            );
+                if (lastEndTimeOffset == "") {
+                    // populate start on first event
+                    chartStartTime = StartDateTimeOffset;
+                }
+
+                lastEndTimeOffset = EndDateTimeOffset;
+                this.Ets.Debug.Trace("New EDT");
+                this.Ets.Debug.Trace(lastEndTimeOffset);
+                
+                datasets.datasets.Add(new ChartData() 
+                    {
+                    label = row.GetString("EventDefinitionName", "N/A"),
+                    eventId = row.GetString("EventID", "N/A"),
+                    groupId = row.GetString("EventDefinitionTypeName", "N/A"),
+                    type = "horizontalBar",
+                    xAxisID = "event-line",
+                    yAxisID = "event",
+                    data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
+                    backgroundColor = backgroundColor,
+                    notes = row.GetString("Notes", ""),
+                    isActive = row.GetBoolean("IsActive", false),
+                    }
+                );
+            }
         }
 
         // capture total seconds to make sure line and bar charts line up
@@ -415,7 +417,7 @@ namespace ETS.Ts.Content
         public string borderColor;
         public int fill;
         public string notes;
-        public string isActive;
+        public bool isActive;
         
         public ChartData()
         {
