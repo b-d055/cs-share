@@ -181,7 +181,7 @@ namespace ETS.Ts.Content
         
         
         this.Ets.Debug.Trace(this.Ets.ToJson(datasets));
-
+        this.Ets.Debug.Trace("Test Trace 1");
         string chartJsInit = @"
         const openEvent = function(event) {
             // get existing base URL
@@ -361,11 +361,11 @@ namespace ETS.Ts.Content
         .Replace("REPLACE_DATE_MIN", this.Ets.ToJson(ShiftStartDateTimeOffset))
         .Replace("REPLACE_DATE_MAX", this.Ets.ToJson(ShiftEndDateTimeOffset))
         .Replace("REPLACE_EVENT_MAX", this.Ets.ToJson(totalChartSeconds));
-        this.Ets.Debug.Trace('Test Trace 1');
+        this.Ets.Debug.Trace("Test Trace 2");
         
         // Add code to ets.readyAll – Code will run on initial load and on every ajax refresh
         this.Ets.Debug.Trace(chartJsInit);
-        this.Ets.Debug.Trace('Test Trace 2');
+        
         this.Ets.Js.AddBackBoneReadyAllJavascript(chartJsInit);
         
         return true;
