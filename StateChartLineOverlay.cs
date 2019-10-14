@@ -25,14 +25,26 @@ namespace ETS.Ts.Content
     //[ContentProperty(Label="System ID", DefaultValuesKey="SystemID", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=1)]
     //public int SystemID { get; set; } = -1;
     
-    [ContentProperty(Label="Event Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=1)]
+    [ContentProperty(Label="Event Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_SOURCE), DisplayOrder=1)]
     public string dataSourceKey { get; set; } = "";
 
-    [ContentProperty(Label="Line Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=2)]
+    [ContentProperty(Label="Line Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_SOURCE), DisplayOrder=2)]
     public string lineDataSourceKey { get; set; } = "";
 
     [ContentProperty(Label="Ignore Duplicate Line Readings", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=3)]
     public int ignoreDuplicateLineReadingsKey { get; set; } = 0;
+
+    [ContentProperty(Label="Event ID", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=1)]
+    public int valueIdKey { get; set; } = "";
+
+    [ContentProperty(Label="Event Group ID", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=2)]
+    public int valueGroupIdKey { get; set; } = "";
+
+    [ContentProperty(Label="Event Group Name", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=3)]
+    public int valueGroupNameKey { get; set; } = "";
+
+    [ContentProperty(Label="Event Group Color", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=4)]
+    public int valueGroupColorKey { get; set; } = "";
     
     
     /// ***********************************************************
@@ -216,8 +228,8 @@ namespace ETS.Ts.Content
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
             if (firstPoint && firstPoint._datasetIndex) {
-                console.log('dataset index', firstPoint._datasetIndex);
-                console.log('chart datasets', chart.data.datasets);
+                // console.log('dataset index', firstPoint._datasetIndex);
+                // console.log('chart datasets', chart.data.datasets);
                 if (firstPoint) {
                     
                     var dataset = chart.data.datasets[firstPoint._datasetIndex];
@@ -252,7 +264,7 @@ namespace ETS.Ts.Content
                     labels: {
                         generateLabels: function(chart) {
                             var data = chart.data;
-                            console.log('data', data);
+                            // console.log('data', data);
                             if (data.labels.length && data.datasets.length) {
                                 let eventTypeLabels = {};
                                 data.datasets.map(function(dataset, i) {
@@ -266,7 +278,7 @@ namespace ETS.Ts.Content
                                         }
                                     }
                                 });
-                                console.log(eventTypeLabels);
+                                // console.log(eventTypeLabels);
                                 return Object.keys(eventTypeLabels).map(function(eventType) {
                                     return eventTypeLabels[eventType];
                                 })
