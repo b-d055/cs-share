@@ -25,25 +25,59 @@ namespace ETS.Ts.Content
     //[ContentProperty(Label="System ID", DefaultValuesKey="SystemID", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=1)]
     //public int SystemID { get; set; } = -1;
     
-    [ContentProperty(Label="Event Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_SOURCE), DisplayOrder=1)]
+    [ContentProperty(
+        Label="Event Data Source Key", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_SOURCE),
+        DisplayOrder=1)]
     public string dataSourceKey { get; set; } = "";
 
-    [ContentProperty(Label="Line Data Source Key", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_SOURCE), DisplayOrder=2)]
+    [ContentProperty(
+        Label="Line Data Source Key", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_SOURCE), 
+        DisplayOrder=2)]
     public string lineDataSourceKey { get; set; } = "";
 
-    [ContentProperty(Label="Ignore Duplicate Line Readings", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL), DisplayOrder=3)]
+    [ContentProperty(
+        Label="Ignore Duplicate Line Readings", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        DisplayOrder=3)]
     public int ignoreDuplicateLineReadingsKey { get; set; } = 0;
 
-    [ContentProperty(Label="Event ID", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=1)]
+    [ContentProperty(
+        Label="Event ID", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),
+        DisplayOrder=1)]
     public int valueIdKey { get; set; } = "";
 
-    [ContentProperty(Label="Event Group ID", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=2)]
+    [ContentProperty(
+        Label="Event Group ID", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
+        DisplayOrder=2)]
     public int valueGroupIdKey { get; set; } = "";
 
-    [ContentProperty(Label="Event Group Name", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=3)]
+    [ContentProperty(
+        Label="Event Group Name", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
+        DisplayOrder=3)]
     public int valueGroupNameKey { get; set; } = "";
 
-    [ContentProperty(Label="Event Group Color", DefaultValuesKey="", GroupKey=nameof(ContentPropertyGroup._GENERAL_DATA), DisplayOrder=4)]
+    [ContentProperty(
+        Label="Event Group Color", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),  
+        DisplayOrder=4)]
     public int valueGroupColorKey { get; set; } = "";
     
     
