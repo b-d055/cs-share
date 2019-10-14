@@ -47,36 +47,44 @@ namespace ETS.Ts.Content
     public int ignoreDuplicateLineReadingsKey { get; set; } = 0;
 
     [ContentProperty(
-        Label="Event ID", 
+        Label="Event Label", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),
         DisplayOrder=1)]
-    public string valueIdKey { get; set; } = "";
+    public string eventLabelKey { get; set; } = "";
+
+    [ContentProperty(
+        Label="Event ID", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),
+        DisplayOrder=2)]
+    public string eventIdKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group ID", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
-        DisplayOrder=2)]
-    public string valueGroupIdKey { get; set; } = "";
+        DisplayOrder=3)]
+    public string eventGroupIdKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group Name", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
-        DisplayOrder=3)]
-    public string valueGroupNameKey { get; set; } = "";
+        DisplayOrder=4)]
+    public string eventGroupNameKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group Color", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),  
-        DisplayOrder=4)]
-    public string valueGroupColorKey { get; set; } = "";
+        DisplayOrder=5)]
+    public string eventGroupColorKey { get; set; } = "";
     
     
     /// ***********************************************************
@@ -161,9 +169,9 @@ namespace ETS.Ts.Content
                 
                 datasets.datasets.Add(new ChartData() 
                     {
-                    label = row.GetString("EventDefinitionName", "N/A"),
-                    eventId = row.GetString("EventID", "N/A"),
-                    groupId = row.GetString("EventDefinitionTypeName", "N/A"),
+                    label = row.GetString(eventLabelKey, "N/A"),
+                    eventId = row.GetString(eventIdKey, "N/A"),
+                    groupId = row.GetString(eventGroupIdKey, "N/A"),
                     type = "horizontalBar",
                     xAxisID = "event-line",
                     yAxisID = "event",
