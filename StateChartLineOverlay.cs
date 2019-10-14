@@ -124,9 +124,9 @@ namespace ETS.Ts.Content
             {
                 //  this.Ets.Debug.Trace(this.Ets.ToJson(row));
                 // var backgroundColor = -Int32.Parse(row.GetString("OeeEventTypeColor", ""));
-                var eventDefinitionTypeColor = row.GetString("EventDefinitionTypeColor", null);
+                var eventGroupColor = row.GetString(eventGroupColorKey, null);
                 this.Ets.Debug.Trace("Event Definition Type Color");
-                var backgroundColor = eventDefinitionTypeColor.AsColor().ToHexDisplay();
+                var backgroundColor = eventGroupColor.AsColor().ToHexDisplay();
                 this.Ets.Debug.TraceObject(backgroundColor);
                 
                 var StartDateTimeOffset = row.GetString("StartDateTimeOffset", "");
