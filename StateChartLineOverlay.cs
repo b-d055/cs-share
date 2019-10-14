@@ -29,7 +29,6 @@ namespace ETS.Ts.Content
         Label="Event Data Source Key", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
-        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_SOURCE),
         DisplayOrder=1)]
     public string dataSourceKey { get; set; } = "";
 
@@ -37,7 +36,6 @@ namespace ETS.Ts.Content
         Label="Line Data Source Key", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
-        SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_SOURCE), 
         DisplayOrder=2)]
     public string lineDataSourceKey { get; set; } = "";
 
@@ -54,7 +52,7 @@ namespace ETS.Ts.Content
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),
         DisplayOrder=1)]
-    public int valueIdKey { get; set; } = "";
+    public string valueIdKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group ID", 
@@ -62,7 +60,7 @@ namespace ETS.Ts.Content
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
         DisplayOrder=2)]
-    public int valueGroupIdKey { get; set; } = "";
+    public string valueGroupIdKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group Name", 
@@ -70,7 +68,7 @@ namespace ETS.Ts.Content
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS), 
         DisplayOrder=3)]
-    public int valueGroupNameKey { get; set; } = "";
+    public string valueGroupNameKey { get; set; } = "";
 
     [ContentProperty(
         Label="Event Group Color", 
@@ -78,7 +76,7 @@ namespace ETS.Ts.Content
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
         SubGroupKey=nameof(ContentPropertySubGroup._GENERAL_FIELDS),  
         DisplayOrder=4)]
-    public int valueGroupColorKey { get; set; } = "";
+    public string valueGroupColorKey { get; set; } = "";
     
     
     /// ***********************************************************
