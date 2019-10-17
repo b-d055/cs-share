@@ -248,7 +248,7 @@ namespace ETS.Ts.Content
             <div>
                 <button type=""button"" style=""width:260px; margin-left:7px; border: none;"" onclick={7}>OPERATOR</button>
             </div> 
-            <div id=""{8}"" class=""tstile tscontentpart-fixed tstile-h-large tstile-xs-w-xlarge {4} tstile-band-top-small""> 
+            <div id=""{8}"" class=""tstile tscontentpart-fixed tstile-h-xlarge tstile-xs-w-xlarge {4} tstile-band-top-small""> 
               <div class=""tstile-body"" style=""border-top-color:{5};""> 
                 <div class=""tstile-bg"" style=""background-image:url({3});""></div>
                 <div class=""tstile-upper"">
