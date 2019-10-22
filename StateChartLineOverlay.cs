@@ -299,6 +299,10 @@ namespace ETS.Ts.Content
 
             // Configuration options
             options: {
+                // turn off animation
+                animation: {
+                    duration: 0
+                },
                 // custom click option
                 onClick: openEvent,
                 // new legend to group events together
