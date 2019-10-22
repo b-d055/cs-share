@@ -364,15 +364,15 @@ namespace ETS.Ts.Content
                             // add notes when non-null
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
                             var footer = dataset.groupId;
-                            // if (dataset.subCategory) {
-                            //     footer = footer + ' - ' + dataset.subCategory;
-                            // };
-                            // if (dataset.machine) {
-                            //     footer = footer + ' - ' + dataset.machine;
-                            // };
-                            // if (dataset.notes) {
-                            //     footer = footer +  ' - ' dataset.notes;
-                            // };
+                            if (dataset.subCategory) {
+                                footer = footer + ' - ' + dataset.subCategory;
+                            };
+                            if (dataset.machine) {
+                                footer = footer + ' - ' + dataset.machine;
+                            };
+                            if (dataset.notes) {
+                                footer = footer +  ' - ' + dataset.notes;
+                            };
                             return footer
                         },
                     }
