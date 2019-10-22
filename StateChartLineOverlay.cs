@@ -179,7 +179,7 @@ namespace ETS.Ts.Content
                     backgroundColor = backgroundColor,
                     notes = row.GetString("Notes", ""),
                     subCategory = row.GetString("RcaDescription", ""),
-                    machine = row.GetString("RcaMachine", ""),
+                    machine = row.GetString("RcaSystemId", ""),
                     isClickable = isClickable,
                     }
                 );
@@ -364,15 +364,15 @@ namespace ETS.Ts.Content
                             // add notes when non-null
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
                             var footer = dataset.groupId;
-                            if (dataset.subCategory) {
-                                footer = footer + ' - ' + dataset.subCategory;
-                            };
-                            if (dataset.machine) {
-                                footer = footer + ' - ' + dataset.machine;
-                            };
-                            if (dataset.notes) {
-                                footer = footer +  ' - ' dataset.notes;
-                            };
+                            // if (dataset.subCategory) {
+                            //     footer = footer + ' - ' + dataset.subCategory;
+                            // };
+                            // if (dataset.machine) {
+                            //     footer = footer + ' - ' + dataset.machine;
+                            // };
+                            // if (dataset.notes) {
+                            //     footer = footer +  ' - ' dataset.notes;
+                            // };
                             return footer
                         },
                     }
