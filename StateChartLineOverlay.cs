@@ -178,6 +178,8 @@ namespace ETS.Ts.Content
                     data = new List<Object> { row.GetInteger("DurationSeconds", 0) },
                     backgroundColor = backgroundColor,
                     notes = row.GetString("Notes", ""),
+                    subCategory = row.GetString("RcaDescription", ""),
+                    machine = row.GetString("RcaMachine", ""),
                     isClickable = isClickable,
                     }
                 );
@@ -361,11 +363,17 @@ namespace ETS.Ts.Content
                         footer: function(tooltipItems, data) {
                             // add notes when non-null
                             var dataset = data.datasets[tooltipItems[0].datasetIndex];
+                            var footer = dataset.groupId;
+                            if (dataset.subCategory) {
+                                footer = footer + ' - ' + dataset.subCategory;
+                            };
+                            if (dataset.machine) {
+                                footer = footer + ' - ' + dataset.machine;
+                            };
                             if (dataset.notes) {
-                                return dataset.notes;
-                            } else {
-                                return '';
-                            }
+                                footer = footer +  ' - ' dataset.notes;
+                            };
+                            return footer
                         },
                     }
                 },
@@ -493,6 +501,8 @@ namespace ETS.Ts.Content
         public string borderColor;
         public int fill;
         public string notes;
+        public string subCategory;
+        public string machine;
         public bool isClickable;
         
         public ChartData()
@@ -507,6 +517,8 @@ namespace ETS.Ts.Content
         this.backgroundColor = "";
         this.borderColor = "";
         this.notes = "";
+        this.subCategory = "";
+        this.machine = "";
         this.isClickable = false;
         }
     }
