@@ -47,6 +47,13 @@ namespace ETS.Ts.Content
     public int ignoreDuplicateLineReadingsKey { get; set; } = 0;
 
     [ContentProperty(
+        Label="Line Area Fill", 
+        DefaultValuesKey="", 
+        GroupKey=nameof(ContentPropertyGroup._GENERAL), 
+        DisplayOrder=4)]
+    public string lineFillKey { get; set; } = "0";
+
+    [ContentProperty(
         Label="Event Label", 
         DefaultValuesKey="", 
         GroupKey=nameof(ContentPropertyGroup._GENERAL), 
@@ -251,7 +258,7 @@ namespace ETS.Ts.Content
                 data = speedArr,
                 backgroundColor = "#000000",
                 borderColor = "rgba(0,0,0,0.8)",
-                fill = 0,
+                fill = lineFillKey,
             }
         );
 
@@ -266,7 +273,6 @@ namespace ETS.Ts.Content
             var origin = currUrl.origin;
             var pathname = currUrl.pathname;
             pathname = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-
             var firstPoint = chart.getElementAtEvent(event)[0];
             console.log('firstPoint', firstPoint);
             if (firstPoint && firstPoint._datasetIndex) {
@@ -290,13 +296,11 @@ namespace ETS.Ts.Content
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'horizontalBar',
-
             // Placeholder for datasets
             data: {
                 labels: ['Event'],
                 datasets: REPLACE_DATASETS
             },
-
             // Configuration options
             options: {
                 // turn off animation
@@ -503,7 +507,7 @@ namespace ETS.Ts.Content
         public List<Object> data;
         public string backgroundColor;
         public string borderColor;
-        public int fill;
+        public string fill;
         public string notes;
         public string subCategory;
         public string machine;
